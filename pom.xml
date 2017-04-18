@@ -10,6 +10,25 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+    <repositories>
+        <repository>
+            <id>maven.oracle.com</id>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <url>https://maven.oracle.com</url>
+            <layout>default</layout>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>maven.oracle.com</id>
+            <url>https://maven.oracle.com</url>
+        </pluginRepository>
+    </pluginRepositories>
     <dependencies>
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -34,6 +53,31 @@
                     <source>1.8</source>
                     <target>1.8</target>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>com.oracle.weblogic</groupId>
+                <artifactId>weblogic-maven-plugin</artifactId>
+                <version>12.2.1-2-0</version>
+                <configuration>
+                    <adminurl>t3://52.174.240.80:7001</adminurl>
+                    <user>weblogic</user>
+                    <password>welcome1</password>
+                    <upload>true</upload>
+                    <targets>myserver</targets>
+                    <action>deploy</action>
+                    <remote>true</remote>
+                    <verbose>true</verbose>
+                    <source>${project.build.directory}/${project.build.finalName}.${project.packaging}</source>
+                    <name>${project.build.finalName}</name>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>deploy</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

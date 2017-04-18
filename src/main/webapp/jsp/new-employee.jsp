@@ -1,12 +1,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
     <head>
-        <link rel="stylesheet" href="../css/bootstrap.min.css">   		
-        <script src="../js/bootstrap.min.js"></script>     
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
+        <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
     </head>
     <body>
         <div class="container">
-            <form action="/employee" method="post"  role="form" data-toggle="validator" >
+            <form action="${pageContext.request.contextPath}/employee" method="post"  role="form" data-toggle="validator" >
                 <c:if test ="${empty action}">                        	
                     <c:set var="action" value="add"/>
                 </c:if>

@@ -1,15 +1,15 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
     <head>
-        <link rel="stylesheet" href="../css/bootstrap.min.css">   		
-        <script src="../js/bootstrap.min.js"></script>       
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
+        <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
     </head>
 
     <body>          
         <div class="container">
             <h2>Employees</h2>
             <!--Search Form -->
-            <form action="/employee" method="get" id="seachEmployeeForm" role="form">
+            <form action="${pageContext.request.contextPath}/employee" method="get" id="seachEmployeeForm" role="form">
                 <input type="hidden" id="searchAction" name="searchAction" value="searchByName">
                 <div class="form-group col-xs-5">
                     <input type="text" name="employeeName" id="employeeName" class="form-control" required="true" placeholder="Type the Name or Last Name of the employee"/>                    
@@ -27,7 +27,7 @@
                     ${message}
                 </div>
             </c:if> 
-            <form action="/employee" method="post" id="employeeForm" role="form" >              
+            <form action="${pageContext.request.contextPath}/employee" method="post" id="employeeForm" role="form" >
                 <input type="hidden" id="idEmployee" name="idEmployee">
                 <input type="hidden" id="action" name="action">
                 <c:choose>
@@ -52,7 +52,7 @@
                                 </c:if>
                                 <tr class="${classSucess}">
                                     <td>
-                                        <a href="/employee?idEmployee=${employee.id}&searchAction=searchById">${employee.id}</a>
+                                        <a href="${pageContext.request.contextPath}/employee?idEmployee=${employee.id}&searchAction=searchById">${employee.id}</a>
                                     </td>                                    
                                     <td>${employee.name}</td>
                                     <td>${employee.lastName}</td>
@@ -80,7 +80,7 @@
                     </c:otherwise>
                 </c:choose>                        
             </form>
-            <form action ="jsp/new-employee.jsp">            
+            <form action ="${pageContext.request.contextPath}/jsp/new-employee.jsp">
                 <br></br>
                 <button type="submit" class="btn btn-primary  btn-md">New employee</button> 
             </form>

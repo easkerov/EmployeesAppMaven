@@ -1,0 +1,4 @@
+<weblogic-web-app xmlns="http://xmlns.oracle.com/weblogic/weblogic-web-app">
+    <weblogic-version>12.2.1</weblogic-version>
+    <context-root>/employees-app</context-root>
+</weblogic-web-app>
